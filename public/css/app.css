@@ -29557,3 +29557,38 @@ readers do not read off random characters that represent icons */
   color: #fff !important;
 }
 
+.sbItem {
+  background: #fff !important;
+}
+
+.topPostImg {
+  height: 400px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+  padding: 4px;
+}
+
+.tpDate {
+  padding: 15px;
+}
+
+.tpBody {
+  padding: 0px 1.25rem;
+}
+
+.spBody {
+  padding: 0.5rem 1.25rem;
+  margin: 0rem 0.75rem;
+}
+
+.spImg {
+  width: 275px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+  border: 1px solid green;
+}
+

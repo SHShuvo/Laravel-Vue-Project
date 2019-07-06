@@ -22,3 +22,31 @@ $fa-font-path:"../webfonts";
   background: #17a2b8;
   color: #fff !important;
 }
+.sbItem{
+  background: #fff !important;
+}
+
+.topPostImg{
+  height: 400px !important;
+  object-fit: cover;
+  object-position: center center;
+  padding: 4px;
+}
+.tpDate{
+  padding: 15px;
+}
+
+.tpBody{
+  padding: 0px 1.25rem;
+}
+.spBody{
+  padding: .5rem 1.25rem;
+  margin: 0rem .75rem;
+}
+
+.spImg{
+  width: 275px !important;
+  object-fit: cover;
+  object-position: center center;
+  border: 1px solid green;
+}

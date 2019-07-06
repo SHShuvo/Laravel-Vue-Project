@@ -59,6 +59,10 @@ Vue.filter('uptext',function(text){
   return text.charAt(0).toUpperCase()+text.slice(1);
 });  
 
+Vue.filter('postBody',function(text,len=400){
+  return text.substr(0,len)+"...  ";
+}); 
+
 import moment from 'moment';
 
 Vue.filter('rdate',function(mdate){
@@ -86,6 +90,7 @@ window.Fire=new Vue();
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('posts', require('./components/Posts.vue').default);
+
 
 
 
@@ -126,7 +131,7 @@ const app = new Vue({
     methods:{
       searchit:_.debounce(()=>{
         Fire.$emit('searching');
-      },1000)
+      },500)
         
       
     }

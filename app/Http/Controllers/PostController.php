@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\User;
 
 class PostController extends Controller
 {
@@ -13,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return Post::latest()->paginate(5);
     }
 
     /**
@@ -23,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -34,7 +36,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required | max:191',
+            'body'=>'required|max:1500',
+            ]);
+         
+        if($request->picture){
+            $ext=explode('/',explode(';',$request->picture)[0])[1];
+            $name=time().'.'.$ext;
+            \Image::make($request->picture)->save(public_path('img/post/').$name);
+        }    
+
+        return Post::create([
+            'title'    =>$request['title'],
+            'body'     =>$request['body'],
+            'user_id'  =>auth()->user()->id,
+            'photo'    =>$name,
+            
+        ]);
     }
 
     /**
