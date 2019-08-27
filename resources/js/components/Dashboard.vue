@@ -52,7 +52,7 @@
                             placeholder="Choose Photo" class="form-input" :class="{ 'is-invalid': form.errors.has('picture') }">
                             <has-error :form="form" field="picture"></has-error>
                         </div>
-                      </div>
+                </div>
 
 
                 
@@ -118,24 +118,24 @@
             },
 
             addPicture(e){
-                let file=e.target.files[0];
-                console.log(file);
-                let reader=new FileReader();
+              let file=e.target.files[0];
+              console.log(file);
+              let reader=new FileReader();
 
-                    if (file['size']<=2111775) {
-                    reader.onloadend=(file)=> {
-                    this.form.picture=reader.result;
-                    }
-                    reader.readAsDataURL(file);
-                    } 
-                    else {
-                        swal.fire(
-                        'Oops!',
-                        'you are uploading larger file than 2 MB ',
-                        'error'
-                        )
-                    }
-                }
+              if (file['size']<=2111775) {
+              reader.onloadend=(file)=> {
+              this.form.picture=reader.result;
+              }
+              reader.readAsDataURL(file);
+              } 
+              else {
+                  swal.fire(
+                  'Oops!',
+                  'you are uploading larger file than 2 MB ',
+                  'error'
+                  )
+              }
+            }
         },
 
         mounted() {

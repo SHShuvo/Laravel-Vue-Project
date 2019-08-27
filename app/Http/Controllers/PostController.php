@@ -64,7 +64,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return Post::findOrFail($id);
+    
     }
 
     /**
@@ -87,7 +88,29 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post=Post::findOrFail($id);
+        $this->validate($request,[
+            'title'=>'required | max:191',
+            'body'=>'required|max:1500',
+        ]);
+
+        if($request->picture!=null){
+            $ext=explode('/',explode(';',$request->picture)[0])[1];
+            $name=time().'.'.$ext;
+            \Image::make($request->picture)->save(public_path('img/post/').$name);
+            
+            $request->merge(['photo'=> $name]);
+
+            $postPhoto=public_path('img/post/').$post->photo;
+            if(file_exists($postPhoto)){
+                @unlink($postPhoto);
+            }
+      
+        }
+
+        $post->update($request->all());
+        return ['message'=>'Updated Successfully'];
+
     }
 
     /**
@@ -98,6 +121,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=Post::findOrFail($id);
+
+        $post->delete();
+
+        return['message'=>'Deleted Successfully'];
     }
 }

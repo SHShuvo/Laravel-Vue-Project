@@ -11,10 +11,10 @@
                         <hr/>
 
                         <div class="card-body tpBody">
-                            <a  href="#"> <h3 class="">{{post.title}}  </h3></a>
+                          <router-link v-bind:to="'show/'+post.id"> <h3 class="">{{post.title}}  </h3> </router-link> 
                             <p>
                                 {{post.body | postBody(310)}} 
-                                <button class="btn btn-outline-primary btn-sm">read more</button>
+                               <router-link v-bind:to="'show/'+post.id"> <button class="btn btn-outline-primary btn-sm">read more</button> </router-link> 
                             </p>
                         </div>
 
@@ -30,7 +30,7 @@
                 <div class="card">
                     <h4 class="card-header">Top Stories</h4>
                     <div class="card-header sbItem"  v-for="(post) in posts" :key="post.id">
-                        <a href="#"><li>{{post.title | postBody(50)}}</li></a>
+                        <router-link v-bind:to="'show/'+post.id"> <li>{{post.title | postBody(50)}}</li> </router-link>
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                         <div class="card spBody" v-for="post in spP()" :key="post.id">
                             <div class="row">
                                 <div class="col-md-12">
-                                     <a  href="#"> <h5 class="">{{post.title}}  </h5></a>
+                                    <router-link v-bind:to="'show/'+post.id"><h5 class="">{{post.title}}  </h5></router-link>
                                 </div>
                            
                         
@@ -60,7 +60,7 @@
                             <div class="col-md-7">
                                 <p>
                                 {{post.body | postBody(300)}} 
-                                <button class="btn btn-outline-primary light btn-sm">read more</button>
+                                <router-link v-bind:to="'show/'+post.id"><button class="btn btn-outline-primary light btn-sm">read more</button></router-link>
                                 </p> 
                             </div>
                             </div>

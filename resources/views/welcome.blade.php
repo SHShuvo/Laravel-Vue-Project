@@ -4,6 +4,6 @@
 @section('content')
 <div class="container-fluid">
    
-    <posts></posts>
+    <router-view></router-view>
 </div>
 @endsection

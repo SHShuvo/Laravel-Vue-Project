@@ -51,6 +51,8 @@ let routes = [
     { path: '/developer', component:require('./components/Developer.vue').default },
     { path: '/users', component:require('./components/Users.vue').default },
     { path: '/profile', component: require('./components/Profile.vue').default },
+    { path: '/', component: require('./components/Posts.vue').default },
+    { path: '/show/:id', component: require('./components/Show.vue').default },
     { path: '/home', component: require('./components/Home.vue').default },
     { path: '*', component: require('./components/NotFound.vue').default }
   ]
@@ -89,7 +91,7 @@ window.Fire=new Vue();
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('posts', require('./components/Posts.vue').default);
+
 
 
 
