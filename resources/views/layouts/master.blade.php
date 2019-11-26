@@ -11,9 +11,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>AdminLTE 3 | Starter</title>
-<link rel="stylesheet" href="/css/app.css">
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+
+  <title>Admin Panel</title>
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/app.css">
 </head>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
 
@@ -56,12 +63,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 d-flex">
         <div class="image">
       <img src="/img/profile/{{ Auth::user()->photo }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/profile" class="d-block">
+          <a href="/profile" class="">
             {{ Auth::user()->name }}
             <p class="text-green">{{ Auth::user()->type }}</p> 
           </a>
@@ -191,6 +198,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </script>    
 @endauth
 
-<script src="/js/app.js"></script>
 </body>
 </html>

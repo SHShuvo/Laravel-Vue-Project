@@ -18,12 +18,19 @@ Route::get('/', function(){
 
 Route::resource('posts','PostController');
 
-//Route::get('getall','PostController@index');
-//Route::get('getsingle/{id}','PostController@show');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/show/{post_id?}', function(){
+    return view('welcome');
+})->where('post_id', '[\/\w\.-]*');
+
 Route::get('/{path}', 'HomeController@index')->where('path','.*');
+
+
+//Route::get('getall','PostController@index');
+//Route::get('getsingle/{id}','PostController@show');
 
 
