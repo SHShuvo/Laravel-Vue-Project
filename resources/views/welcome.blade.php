@@ -6,6 +6,6 @@
 
 @section('content')
     <div class="container-fluid">
-        <router-view></router-view>
+        <main-home></main-home>
     </div>
 @endsection

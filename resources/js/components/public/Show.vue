@@ -1,26 +1,28 @@
 <template>
-    <div class="container">
-    
-           <div class="col-md-12">
-             <p style="margin-left:75px;">
-                 <button @click="editModal(posts)" class="btn btn-primary"> <i class="fa fa-edit"> </i> Edit</button>
-                 <button @click="deletePost(posts.id)" class="btn btn-danger"> <i class="fa fa-trash"> </i> Delete</button>
-             </p>
-              <img class="img-responsive showImg" :src="'/img/post/'+posts.photo" alt="">
-                        <hr/>
-
-                        <div class="card-body tpBody">
-                          <h3 class="">{{posts.title}}  </h3>
-                            <p>
-                                {{posts.body}} 
-                            </p>
-                        </div>
-
-                        <div class="tpDate">
-                            <small >Written On {{posts.created_at}} By {{posts.user_id}}</small>
-                        </div>
+    <span>
+      <div class="row">
+        <div class="card">
+          <p class="mt-2 ml-2">
+              <button @click="editModal(posts)" class="btn btn-primary"> <i class="fa fa-edit"> </i> Edit</button>
+              <button @click="deletePost(posts.id)" class="btn btn-danger"> <i class="fa fa-trash"> </i> Delete</button>
+          </p>
           
+          <img class="img-responsive topPostImg" :src="'/img/post/'+posts.photo" alt="">
+          <hr/>
+
+          <div class="card-body tpBody">
+            <h3 class="">{{posts.title}}  </h3>
+              <p>{{posts.body}} </p>
           </div>
+
+          <div class="tpDate">
+              <small >Written On {{posts.created_at}} By {{posts.user_id}}</small>
+          </div>
+          
+        </div>
+       
+      </div>
+          
         <div class="modal fade" id="addPost" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -49,20 +51,18 @@
                 </div>
 
                 <div class="form-group">
-                        <label for="picture" class="col-sm-4 control-label">Add Photo: </label>
+                  <label for="picture" class="col-sm-4 control-label">Add Photo: </label>
 
-                        <div class="col-sm-10">
-                          <input  type="file" @change="addPicture" name="picture"
-                            placeholder="Choose Photo" class="form-input" :class="{ 'is-invalid': form.errors.has('picture') }">
-                            <has-error :form="form" field="picture"></has-error>
-                        </div>
+                  <div class="col-sm-10">
+                    <input  type="file" @change="addPicture" name="picture"
+                      placeholder="Choose Photo" class="form-input" :class="{ 'is-invalid': form.errors.has('picture') }">
+                      <has-error :form="form" field="picture"></has-error>
+                  </div>
                 </div>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Update</button>
-                
+                <button type="submit" class="btn btn-primary">Update</button> 
             </div>
             </form>
 
@@ -71,7 +71,7 @@
     </div>     
 
           
-    </div>
+    </span>
 </template>
 
 <script>
@@ -135,6 +135,7 @@
               'success'
               )
             Fire.$emit('afterCreate');
+            Fire.$emit('loadSidebar');
             $('#addPost').modal('hide');
             this.$Progress.finish();
            })
@@ -171,12 +172,11 @@
         },
 
         created() {
-           this.loadPost();
-           Fire.$on('afterCreate',()=>{
+          this.loadPost();
+          Fire.$on('afterCreate',()=>{
             this.loadPost();
           });
-           
-        }
+        },
     }
 </script>
 
